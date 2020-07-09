@@ -43,7 +43,7 @@ class Manzana {
 	
 	method personaSeMudaA(persona, manzanaDestino) 
 	{
-		personas.remove(persona)
+		self.personas().remove(persona)
 		manzanaDestino.personas().add(persona)
 	}
 	
