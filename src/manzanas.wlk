@@ -6,6 +6,23 @@ class Manzana {
 	const property personas = []
 	var property position
 	
+	
+	method cantidadDeHabitantes()
+	{
+		return personas.size()
+	}
+	
+	method cantidadDeInfectados()
+	{
+		return personas.count({p => p.estaInfectada()})
+	}
+	
+	method agregarHabitante(unaPersona)
+	{
+		personas.add(unaPersona)
+	}
+	 
+	
 	method image() {
 		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
 		// también vale reemplazar estos dibujos horribles por otros más lindos
@@ -13,7 +30,8 @@ class Manzana {
 	}
 	
 	// este les va a servir para el movimiento
-	method esManzanaVecina(manzana) {
+	method esManzanaVecina(manzana) 
+	{
 		return manzana.position().distance(position) == 1
 	}
 
@@ -23,13 +41,15 @@ class Manzana {
 		// despues agregar la curacion
 	}
 	
-	method personaSeMudaA(persona, manzanaDestino) {
-		// implementar
+	method personaSeMudaA(persona, manzanaDestino) 
+	{
+		personas.remove(persona)
+		manzanaDestino.personas().add(persona)
 	}
 	
-	method cantidadContagiadores() {
-		return 0
-		// reemplazar por la cantidad de personas infectadas que no estan aisladas
+	method cantidadContagiadores() 
+	{
+		return personas.count({p => p.estaInfectada() and not p.estaAislada()})
 	}
 	
 	method noInfectades() {

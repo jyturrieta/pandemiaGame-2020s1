@@ -22,7 +22,7 @@ object simulacion {
 	method agregarManzana(manzana) { manzanas.add(manzana) }
 	
 	method debeInfectarsePersona(persona, cantidadContagiadores) {
-		const chanceDeContagio = if (persona.respetaCuarentena()) 
+		const chanceDeContagio = if (persona.respetaLaCuarentena()) 
 			self.chanceDeContagioConCuarentena() 
 			else 
 			self.chanceDeContagioSinCuarentena()
@@ -30,7 +30,7 @@ object simulacion {
 	}
 
 	method crearManzana() {
-		const nuevaManzana = new Manzana()
+		const nuevaManzana = new Manzana( )
 		// agregar la cantidad de personas segun self.personasPorManzana()
 		return nuevaManzana
 	}
