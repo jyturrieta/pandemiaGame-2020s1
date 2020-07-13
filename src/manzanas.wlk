@@ -52,6 +52,11 @@ class Manzana {
 		return personas.filter({ pers => not pers.estaInfectada() })
 	} 	
 	
+	method cantidadConSintomas()
+	{
+		return personas.count({p => p.tieneSintomas()})
+	}
+	
 	
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()

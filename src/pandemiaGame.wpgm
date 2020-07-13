@@ -1,16 +1,24 @@
 import wollok.game.*
 import simulacion.*
 
+
+
 object pandemiaGameConfig {
 	method height() = 4
 	method width() = 6
 	method title() = "Simuléichon"
 	
-	method configureGame() {
+	method configureGame() 
+	{
 		self.configureGameParameters()
 		self.agregarManzanas()
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
+		
+		keyboard.h().onPressDo{simulacion.estadoDeSimulacion()}
+		keyboard.i().onPressDo{simulacion.agregarInfectado()}
+		keyboard.p().onPressDo{simulacion.pasarUnDia()}
+		
 	}
 		
 	method configureGameParameters() {

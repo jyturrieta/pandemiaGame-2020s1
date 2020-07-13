@@ -38,8 +38,24 @@ object simulacion {
     {
     	diaActual += 1
     	manzanas.forEach({m => m.pasarUnDia()})
+    	console.println("terminó el día: " + (self.diaActual() - 1)) 
     	
     }
+    
+	method cantidadTotalDePersonas()
+	{
+		return manzanas.sum({manzana => manzana.cantidadDeHabitantes()})
+	}
+	   
+	method cantidadTotalDeInfectados()
+	{
+		return manzanas.sum({manzana => manzana.cantidadDeInfectados()})
+	}   
+	
+	method cantidadTotalConSintomas()
+	{
+		return manzanas.sum({manzana => manzana.cantidadConSintomas()})
+	}
     
 	method crearManzana() 
 	{
@@ -47,8 +63,23 @@ object simulacion {
 		(1..self.personasPorManzana()).forEach({m => nuevaManzana.agregarHabitante(self.crearPersona())})
 		return nuevaManzana
 	}
+	method estadoDeSimulacion() 
+	{
+		 console.println("Día: " + self.diaActual() + " total de personas: " + self.cantidadTotalDePersonas() + " Infectados: "
+		 	+ self.cantidadTotalDeInfectados() + " con sintomas: " + self.cantidadTotalConSintomas()) 
+	}
 	
+	method agregarInfectado()
+	{
+		const infectado = new Persona()
+		infectado.infectarse()
+		self.agregarPersonaEnCualquierManzana(infectado)
+	}
 	
-	
+	method agregarPersonaEnCualquierManzana(unaPersona)
+	{
+		const unaManzana = manzanas.anyOne()
+		unaManzana.agregarHabitante(unaPersona)
+	}
 	
 }
