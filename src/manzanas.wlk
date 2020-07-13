@@ -44,7 +44,7 @@ class Manzana {
 	method personaSeMudaA(persona, manzanaDestino) 
 	{
 		self.personas().remove(persona)
-		manzanaDestino.personas().add(persona)
+		manzanaDestino.agregarHabitante(persona)
 	}
 	
 	method cantidadContagiadores() 
