@@ -1,6 +1,6 @@
 import wollok.game.*
 import simulacion.*
-
+import agenteDeSalud.*
 
 
 object pandemiaGameConfig {
@@ -14,10 +14,15 @@ object pandemiaGameConfig {
 		self.agregarManzanas()
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
-		
-		keyboard.h().onPressDo{simulacion.estadoDeSimulacion()}
+		self.agregarAgenteDeSalud()
+		keyboard.o().onPressDo{simulacion.estadoDeSimulacion()}
 		keyboard.i().onPressDo{simulacion.agregarInfectado()}
 		keyboard.p().onPressDo{simulacion.pasarUnDia()}
+		keyboard.w().onPressDo{agenteDeSalud.moverseArriba()}
+		keyboard.a().onPressDo{agenteDeSalud.moverseIzquierda()}
+		keyboard.s().onPressDo{agenteDeSalud.moverseAbajo()}
+		keyboard.d().onPressDo{agenteDeSalud.moverseDerecha()}
+		
 		
 	}
 		
@@ -37,7 +42,11 @@ object pandemiaGameConfig {
 			})
 		})
 	}
-	
+	method agregarAgenteDeSalud()
+	{
+		agenteDeSalud.position(game.origin())
+		game.addVisual(agenteDeSalud)
+	}
 }
 
 program pandemiaGame {
