@@ -29,6 +29,11 @@ object simulacion {
 		return (1..cantidadContagiadores).any({n => self.tomarChance(chanceDeContagio) })	
 	}
 	
+	method chanceDeTenerSintomas()
+	{
+		return self.tomarChance(self.chanceDePresentarSintomas())
+	}
+	
 	method crearPersona()
 	{
         return new Persona()  
@@ -82,4 +87,8 @@ object simulacion {
 		unaManzana.agregarHabitante(unaPersona)
 	}
 	
+	method obtenerManzana(pos)
+	{
+		return manzanas.find({m => m.position() == pos})
+	}
 }

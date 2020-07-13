@@ -64,6 +64,7 @@ class Manzana {
 			self.noInfectades().forEach({ persona => 
 				if (simulacion.debeInfectarsePersona(persona, cantidadContagiadores)) {
 					persona.infectarse()
+					persona.tieneSintomas(simulacion.chanceDeTenerSintomas())
 				}
 			})
 		}
@@ -101,5 +102,20 @@ class Manzana {
 		{
 			"blanco.png"
 		}			
-	}															
+	}		
+	
+	method infectadosConSintomas()
+	{
+		return personas.filter({pers => pers.estaInfectada() and pers.tieneSintomas()})
+	}													
+	
+	method aislarInfectados()
+	{
+		self.infectadosConSintomas().forEach({pers => pers.estaAislada(true)})
+	}
+	
+	method acuarentenar()
+	{
+		personas.forEach({pers => pers.respetaLaCuarentena(true)})
+	}
 }

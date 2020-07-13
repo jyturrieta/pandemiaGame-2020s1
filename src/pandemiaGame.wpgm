@@ -18,12 +18,16 @@ object pandemiaGameConfig {
 		keyboard.o().onPressDo{simulacion.estadoDeSimulacion()}
 		keyboard.i().onPressDo{simulacion.agregarInfectado()}
 		keyboard.p().onPressDo{simulacion.pasarUnDia()}
-		keyboard.w().onPressDo{agenteDeSalud.moverseArriba()}
-		keyboard.a().onPressDo{agenteDeSalud.moverseIzquierda()}
-		keyboard.s().onPressDo{agenteDeSalud.moverseAbajo()}
-		keyboard.d().onPressDo{agenteDeSalud.moverseDerecha()}
 		
 		
+		keyboard.d().onPressDo{ if(agenteDeSalud.position().x() < self.width()-1) {agenteDeSalud.moverseDerecha()} }
+        keyboard.a().onPressDo{ if(agenteDeSalud.position().x() > 0) {agenteDeSalud.moverseIzquierda()} } 
+        keyboard.w().onPressDo{ if(agenteDeSalud.position().y() < self.height()-1) {agenteDeSalud.moverseArriba() } }
+        keyboard.s().onPressDo{ if(agenteDeSalud.position().y() > 0) {agenteDeSalud.moverseAbajo()} }
+        
+        keyboard.j().onPressDo{agenteDeSalud.aislarSintomaticos() game.say(agenteDeSalud, "Aislado maquinola")}
+        keyboard.k().onPressDo{agenteDeSalud.mandarARespetarCuarentena() game.say(agenteDeSalud, "#QuedateEnCasa")}
+        
 	}
 		
 	method configureGameParameters() {

@@ -1,3 +1,6 @@
+import simulacion.*
+import manzanas.*
+
 object agenteDeSalud 
 {
 	var property position
@@ -22,6 +25,20 @@ object agenteDeSalud
 	
 	method moverseDerecha() {
 		self.moverse(self.position().right(1))
+	}
+	
+	method aislarSintomaticos()
+	{
+		self.manzanaActual().aislarInfectados()
+	}
+	
+	method manzanaActual()
+	{
+	  return simulacion.obtenerManzana(self.position())	
+	}
+	method mandarARespetarCuarentena()
+	{
+		 self.manzanaActual().acuarentenar()
 	}
 }
 
