@@ -5,7 +5,7 @@ import simulacion.*
 class Persona {
 	var property estaAislada = false
 	var property estaInfectada = false
-	var property diaDeInfeccion = null
+	var property diaDeInfeccion = 0
 	var property respetaLaCuarentena = false
 	var property tieneSintomas = false
 	

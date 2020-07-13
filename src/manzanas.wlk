@@ -12,22 +12,13 @@ class Manzana {
 		return personas.size()
 	}
 	
-	method cantidadDeInfectados()
-	{
-		return personas.count({p => p.estaInfectada()})
-	}
 	
 	method agregarHabitante(unaPersona)
 	{
 		personas.add(unaPersona)
 	}
-	 
+	 	
 	
-	method image() {
-		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
-		// también vale reemplazar estos dibujos horribles por otros más lindos
-		return "blanco.png"
-	}
 	
 	// este les va a servir para el movimiento
 	method esManzanaVecina(manzana) 
@@ -52,9 +43,15 @@ class Manzana {
 		return personas.count({p => p.estaInfectada() and not p.estaAislada()})
 	}
 	
+	method cantidadDeInfectados()
+	{
+		return personas.count({p => p.estaInfectada()})
+	}
+	
 	method noInfectades() {
 		return personas.filter({ pers => not pers.estaInfectada() })
 	} 	
+	
 	
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()
@@ -75,4 +72,29 @@ class Manzana {
 			self.personaSeMudaA(viajero, destino)			
 		}
 	}
+	
+	method image()
+	{
+		
+		return if (self.cantidadDeInfectados() == self.cantidadDeHabitantes())
+		{
+			"rojo.png"
+		}	
+		else if (self.cantidadDeInfectados().between(8,self.cantidadDeHabitantes() - 1)) 
+		{
+			"naranjaOscuro.png"
+		}			
+		else if (self.cantidadDeInfectados().between(4,7))
+		{
+			"naranja.png"
+		}							
+		else if (self.cantidadDeInfectados().between(1,3))
+		{
+			"amarillo.png"
+		}
+		else
+		{
+			"blanco.png"
+		}			
+	}															
 }

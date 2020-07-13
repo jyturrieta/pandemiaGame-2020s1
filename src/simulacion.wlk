@@ -34,14 +34,21 @@ object simulacion {
         return new Persona()  
     }
     
+    method pasarUnDia()
+    {
+    	diaActual += 1
+    	manzanas.forEach({m => m.pasarUnDia()})
+    	
+    }
+    
 	method crearManzana() 
 	{
 		const nuevaManzana = new Manzana()
 		(1..self.personasPorManzana()).forEach({m => nuevaManzana.agregarHabitante(self.crearPersona())})
-		// agregar la cantidad de personas segun self.personasPorManzana()
-		
 		return nuevaManzana
 	}
+	
+	
 	
 	
 }
