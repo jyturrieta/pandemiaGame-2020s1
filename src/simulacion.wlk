@@ -71,7 +71,7 @@ object simulacion {
 	method estadoDeSimulacion() 
 	{
 		 console.println("Día: " + self.diaActual() + " total de personas: " + self.cantidadTotalDePersonas() + " Infectados: "
-		 	+ self.cantidadTotalDeInfectados() + " con sintomas: " + self.cantidadTotalConSintomas()) 
+		 	+ self.cantidadTotalDeInfectados() + " Con sintomas: " + self.cantidadTotalConSintomas()) 
 	}
 	
 	method agregarInfectado()

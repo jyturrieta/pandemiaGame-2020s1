@@ -30,9 +30,13 @@ class Manzana {
 		self.transladoDeUnHabitante()
 		self.simulacionContagiosDiarios()
 		// despues agregar la curacion
-		personas.forEach({p => p.curarse()})
+		self.curacion()
 	}
 		
+	method curacion()
+	{
+		personas.forEach({p => p.curarse()})
+	}
 	method personaSeMudaA(persona, manzanaDestino) 
 	{
 		self.personas().remove(persona)

@@ -1,0 +1,64 @@
+import manzanas.*
+import personas.*
+import simulacion.*
+import agenteDeSalud.*
+import wollok.game.*
+
+const alejo = new Persona()
+const luz = new Persona()
+const lucho = new Persona()
+const matias = new Persona()
+const milagros = new Persona()
+const manz1 = new Manzana()
+
+describe "manzanas y personas"
+{
+	fixture
+	{
+		milagros.infectarse()
+		luz.infectarse()
+		alejo.infectarse()
+		alejo.tieneSintomas(true)
+		milagros.tieneSintomas(true)
+		milagros.estaAislada(true)
+		manz1.agregarHabitante(alejo)
+		manz1.agregarHabitante(matias)
+		manz1.agregarHabitante(luz)
+		manz1.agregarHabitante(milagros)
+		manz1.agregarHabitante(lucho)
+	}
+	
+	test "tiene sintomas"
+	{
+		assert.that(alejo.tieneSintomas())
+		assert.notThat(luz.tieneSintomas())
+	}
+	
+	test "esta infectado"
+	{
+		assert.that(milagros.estaInfectada())
+		assert.notThat(matias.estaInfectada())
+	}
+	
+	test "cantidad de gente en la manzana"
+	{
+		assert.equals(5, manz1.cantidadDeHabitantes())
+	}
+	
+	test "cantidad de infectados"
+	{
+		assert.equals(3, manz1.cantidadDeInfectados())
+	}
+	
+	test "cantidad de contagiadores"
+	{
+		assert.equals(2, manz1.cantidadContagiadores())
+	}
+	
+	test "infectados con sintomas"
+	{
+		assert.equals([alejo, milagros], manz1.infectadosConSintomas())
+	}
+	
+	
+}

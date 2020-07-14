@@ -4,8 +4,8 @@ import agenteDeSalud.*
 
 
 object pandemiaGameConfig {
-	method height() = 4
-	method width() = 6
+	method height() = 6
+	method width() = 4
 	method title() = "Simuléichon"
 	
 	method configureGame() 
@@ -53,7 +53,8 @@ object pandemiaGameConfig {
 	}
 }
 
-program pandemiaGame {
+program pandemiaGame 
+{
 	pandemiaGameConfig.configureGame()
 	game.start()
 }
