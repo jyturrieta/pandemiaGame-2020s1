@@ -17,7 +17,7 @@ class Persona {
 	
 	method curarse()
 	{
-		if ((self.diaDeInfeccion() - simulacion.diaActual() == simulacion.duracionInfeccion() ))
+		if ((self.diaDeInfeccion() - simulacion.diaActual()).abs() == simulacion.duracionInfeccion())
 		{
 			estaInfectada = false
 			tieneSintomas = false
