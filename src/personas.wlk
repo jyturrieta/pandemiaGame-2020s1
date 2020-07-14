@@ -14,5 +14,22 @@ class Persona {
 		diaDeInfeccion = simulacion.diaActual()
 		estaInfectada = true
 	}
+	
+	method curarse()
+	{
+		if ((self.diaDeInfeccion() - simulacion.diaActual() == 5 ))
+		{
+			estaInfectada = false
+			tieneSintomas = false
+		}
+	}
+	
+	method pasarUnDia()
+	{
+		if (estaInfectada)
+		{
+			self.curarse()
+		}
+	}
 }
 
