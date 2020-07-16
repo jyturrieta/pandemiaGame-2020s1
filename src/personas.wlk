@@ -17,21 +17,18 @@ class Persona {
 	
 	method curarse()
 	{
-		if ((self.diaDeInfeccion() - simulacion.diaActual()).abs() == simulacion.duracionInfeccion())
+		if ( self.estaInfectada() ) 
 		{
+			if ( (self.diaDeInfeccion() - simulacion.diaActual()).abs() == simulacion.duracionInfeccion() )
+			{
 			estaInfectada = false
 			tieneSintomas = false
 			estaAislada = false
 			diaDeInfeccion = 0
+			}
 		}
 	}
 	
-	method pasarUnDia()
-	{
-		if (estaInfectada)
-		{
-			self.curarse()
-		}
-	}
+	
 }
 
